@@ -1,0 +1,141 @@
+record( bi,"$(P):NAME"){
+  field( DESC,"$(LOC)")
+}
+record( stringout,"$(P):$(M):MOTR:MTYP"){
+  field( DESC,"Motor type")
+  field( VAL, "$(MTYP)")
+  field( PINI, "1")
+}
+record(mbbi,"$(P):$(M):MOTR:STATE") {
+    field(DESC,"XPS Group Status")
+    field(DTYP, "asynInt32")
+    field(PINI, "1")
+    field(SCAN, "I/O Intr")
+    field(INP,"@asyn($(PORT),$(ADDR))XPS_STATUS")
+    field(ZRVL, "10")
+    field(ONVL, "11")
+    field(TWVL, "12")
+    field(THVL, "13")
+    field(FRVL, "7")
+    field(FVVL, "44")
+    field(SXVL, "42")
+    field(SVVL, "43")
+    field(EIVL, "20")
+    field(NIVL, "0")
+    field(TEVL, "1")
+    field(ELVL, "3")
+    field(TVVL, "22")
+    #field(TTVL, "1")
+    field(ZRST, "Ready")
+    field(ONST, "Ready")
+    field(TWST, "Ready")
+    field(THST, "Ready")
+    field(FRST, "Not Initialized")
+    field(FVST, "Moving")
+    field(SXST, "Not Referenced")
+    field(SVST, "Homing")
+    field(EIST, "Disabled")
+    field(NIST, "Not Initialized")
+    field(TEST, "Not Initialized")
+    field(ELST, "Not Initialized")
+    field(TVST, "Not Initialized")
+    #field(TTST, "Not Initialized")
+}
+record( ao,"$(P):$(M):MOTR:ABS1"){
+  field( DESC,"absolute move 1")
+  field( PREC,"$(PREC)")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+  field( OUT, "$(P):$(M):MOTR:ABS1:GO")
+  field( PINI, "1")
+}
+record( ao,"$(P):$(M):MOTR:ABS1:GO"){
+  field( DESC,"absolute move 1")
+  field( PREC,"$(PREC)")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+  field( OUT, "$(P):$(M):MOTR PP")
+}
+record( ao,"$(P):$(M):MOTR:ABS2") {
+  field( DESC,"absolute move 2")
+  field( PREC,"$(PREC)")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+  field( OUT, "$(P):$(M):MOTR:ABS2:GO")
+  field( PINI, "1")
+}
+record( ao,"$(P):$(M):MOTR:ABS2:GO"){
+  field( DESC,"absolute move 2")
+  field( PREC,"$(PREC)")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+  field( OUT, "$(P):$(M):MOTR PP")
+}
+record( ao,"$(P):$(M):MOTR:ABS3") {
+  field( DESC,"absolute move 3")
+  field( PREC,"$(PREC)")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+  field( OUT, "$(P):$(M):MOTR:ABS3:GO")
+  field( PINI, "1")
+}
+record( ao,"$(P):$(M):MOTR:ABS3:GO"){
+  field( DESC,"absolute move 3")
+  field( PREC,"$(PREC)")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+  field( OUT, "$(P):$(M):MOTR PP")
+}
+record( calc,"$(P):$(M):CALC:VAL") {
+  field( DESC, "absolute move for gui")
+  field( SCAN, ".5 second")
+  field( EGU,  "%")
+  field( CALC, "A*100.0/$(DHLM)")
+  field( INPA, "$(P):$(M):MOTR.VAL NPP")
+}
+record( calc,"$(P):$(M):CALC:RBV") {
+  field( DESC, "readback for gui")
+  field( SCAN, ".5 second")
+  field( EGU,  "%")
+  field( CALC, "A*100.0/$(DHLM)")
+  field( INPA, "$(P):$(M):MOTR.RBV NPP")
+}
+record( ai,"$(P):$(M):MOTR:SAVED1"){
+  field( DESC, "saved position")
+  field( PREC, "$(PREC)")
+  field( INP, "$(P):$(M):MOTR.RBV")
+}
+record( calcout,"$(P):$(M):MOTR:RESTORE1"){
+  field( DESC, "restore position")
+  field( PREC, "$(PREC)")
+  field( INPA, "$(P):$(M):MOTR:SAVED1.VAL")
+  field( CALC, "A")
+  field( OUT, "$(P):$(M):MOTR.VAL")
+  field( FLNK, "$(P):$(M):MOTR.PROC")
+}
+record( ai,"$(P):$(M):MOTR:SAVED2"){
+  field( DESC, "saved position")
+  field( PREC, "$(PREC)")
+  field( INP, "$(P):$(M):MOTR.RBV")
+}
+record( calcout,"$(P):$(M):MOTR:RESTORE2"){
+  field( DESC, "restore position")
+  field( PREC, "$(PREC)")
+  field( INPA, "$(P):$(M):MOTR:SAVED2.VAL")
+  field( CALC, "A")
+  field( OUT, "$(P):$(M):MOTR.VAL")
+  field( FLNK, "$(P):$(M):MOTR.PROC")
+}
+record( ai,"$(P):$(M):MOTR:SAVED3"){
+  field( DESC, "saved position")
+  field( PREC, "$(PREC)")
+  field( INP, "$(P):$(M):MOTR.RBV")
+}
+record( calcout,"$(P):$(M):MOTR:RESTORE3"){
+  field( DESC, "restore position")
+  field( PREC, "$(PREC)")
+  field( INPA, "$(P):$(M):MOTR:SAVED3.VAL")
+  field( CALC, "A")
+  field( OUT, "$(P):$(M):MOTR.VAL")
+  field( FLNK, "$(P):$(M):MOTR.PROC")
+}

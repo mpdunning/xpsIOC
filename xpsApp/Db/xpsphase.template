@@ -1,0 +1,142 @@
+record( ao,"$(P):AO:REL:1") {
+  field( DESC,"relative move 1")
+  field( PREC,"$(PREC)")
+  field( VAL, "1")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+}
+record( dfanout, "$(P):DF:REL:1"){
+  field( DESC, "value for relative move")
+  field( DOL,  "$(P):AO:REL:1")
+  field( OMSL, "closed_loop")
+  field( OUTA, "$(P):m1:MOTR.TWV NPP")
+  field( OUTB, "$(P):m2:MOTR.TWV NPP")
+}
+record( ao,"$(P):AO:REL:2") {
+  field( DESC,"relative move 2")
+  field( PREC,"$(PREC)")
+  field( VAL, "2")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+}
+record( dfanout, "$(P):DF:REL:2"){
+  field( DESC, "value for relative move")
+  field( DOL,  "$(P):AO:REL:2")
+  field( OMSL, "closed_loop")
+  field( OUTA, "$(P):m1:MOTR.TWV NPP")
+  field( OUTB, "$(P):m2:MOTR.TWV NPP")
+}
+record( ao,"$(P):AO:REL:3") {
+  field( DESC,"relative move 3")
+  field( PREC,"$(PREC)")
+  field( VAL, "5")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+}
+record( dfanout, "$(P):DF:REL:3"){
+  field( DESC, "value for relative move")
+  field( DOL,  "$(P):AO:REL:3")
+  field( OMSL, "closed_loop")
+  field( OUTA, "$(P):m1:MOTR.TWV NPP")
+  field( OUTB, "$(P):m2:MOTR.TWV NPP")
+}
+record( ao,"$(P):AO:REL:4") {
+  field( DESC,"relative move 4")
+  field( PREC,"$(PREC)")
+  field( VAL, "10")
+  field( DRVL,"$(DLLM)")
+  field( DRVH,"$(DHLM)")
+}
+record( dfanout, "$(P):DF:REL:4"){
+  field( DESC, "value for relative move")
+  field( DOL,  "$(P):AO:REL:4")
+  field( OMSL, "closed_loop")
+  field( OUTA, "$(P):m1:MOTR.TWV NPP")
+  field( OUTB, "$(P):m2:MOTR.TWV NPP")
+}
+record( dfanout, "$(P):DF:AWAY:GO"){
+  field( DESC, "start oposite from move")
+  field( OUTA, "$(P):m1:MOTR.TWR PP")
+  field( OUTB, "$(P):m2:MOTR.TWF PP")
+  field( VAL,  "1")
+}
+record( dfanout, "$(P):DF:TOWARD:GO"){
+  field( DESC, "start oposite to move")
+  field( OUTA, "$(P):m1:MOTR.TWF PP")
+  field( OUTB, "$(P):m2:MOTR.TWR PP")
+  field( VAL,  "1")
+}
+record( dfanout, "$(P):DF:RIGHT:GO"){
+  field( DESC, "start move to right")
+  field( OUTA, "$(P):m1:MOTR.TWF PP")
+  field( OUTB, "$(P):m2:MOTR.TWF PP")
+  field( VAL,  "1")
+}
+record( dfanout, "$(P):DF:LEFT:GO"){
+  field( DESC, "start move to left")
+  field( OUTA, "$(P):m1:MOTR.TWR PP")
+  field( OUTB, "$(P):m2:MOTR.TWR PP")
+  field( VAL,  "1")
+}
+#------ Phase & Amplitude Calibrated --------------------
+record( ao,"$(P):AO:PHASE"){
+  field( DESC, "Phase:")
+  field( PREC, "$(PREC)")
+  field( EGU,  "deg")
+  field( VAL,  "10.0")
+  field( DRVL, "-360")
+  field( DRVH, "360")
+}
+record( ao,"$(P):AO:AMPLI"){
+  field( DESC, "Amplitude:")
+  field( PREC, "$(PREC)")
+  field( EGU,  "db")
+  field( VAL,  "-10.0")
+  field( DRVL, "-1000")
+  field( DRVH, "1000")
+}
+record( ao,"$(P):AO:COEF1"){
+  field( DESC, "Coeff 1:")
+  field( PREC, "$(PREC)")
+  field( EGU,  "mm/deg")
+  field( VAL,  "0.045")
+}
+record( ao,"$(P):AO:COEF2"){
+  field( DESC, "Coeff 2:")
+  field( PREC, "$(PREC)")
+  field( EGU,  "mm")
+  field( VAL,  "18.24")
+}
+record( aSub, "$(P):AS:CONVRT"){
+  field( DESC, "Convert:")
+  field( INAM, "asubInit")
+  field( SNAM, "asubConvert")
+  field( INPA, "$(P):AO:PHASE.VAL")	field( FTA,  "FLOAT")
+  field( INPB, "$(P):AO:AMPLI.VAL")	field( FTB,  "FLOAT")
+  field( INPC, "$(P):AO:COEF1.VAL")	field( FTC,  "FLOAT")
+  field( INPD, "$(P):AO:COEF2.VAL")	field( FTD,  "FLOAT")
+  field( OUTA, "$(P):m1:MOTR.VAL PP")	field( FTVA, "FLOAT")
+  field( OUTB, "$(P):m2:MOTR.VAL PP")	field( FTVB, "FLOAT")
+}
+record( aSub, "$(P):AS:MTOPH"){
+  field( DESC, "Motor to Phase:")
+  field( SCAN, "1 second")
+  field( INAM, "asubInit")
+  field( SNAM, "asubMotToPhase")
+  field( INPA, "$(P):m1:MOTR.RBV")	field( FTA,  "FLOAT")
+  field( INPB, "$(P):m2:MOTR.RBV")	field( FTB,  "FLOAT")
+  field( INPC, "$(P):AO:COEF1.VAL")	field( FTC,  "FLOAT")
+  field( INPD, "$(P):AO:COEF2.VAL")	field( FTD,  "FLOAT")
+  field( OUTA, "$(P):AI:PHASE.VAL PP")	field( FTVA, "FLOAT")
+  field( OUTB, "$(P):AI:AMPLI.VAL PP")	field( FTVB, "FLOAT")
+}
+record( ai,"$(P):AI:PHASE"){
+  field( DESC, "Phase:")
+  field( PREC, "$(PREC)")
+  field( EGU,  "deg")
+}
+record( ai,"$(P):AI:AMPLI"){
+  field( DESC, "Amplitude:")
+  field( PREC, "$(PREC)")
+  field( EGU,  "db")
+}

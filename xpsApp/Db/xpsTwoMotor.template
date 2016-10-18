@@ -1,0 +1,40 @@
+record( ao,"$(P):MOVE:INC") {
+  field( DESC, "Increment for move")
+  field( EGU,  "$(EGU)")
+  field( PREC, "$(PREC)")
+  field( VAL,  "1")
+  field( DRVL, "$(DLLM)")
+  field( DRVH, "$(DHLM)")
+  field( FLNK, "$(P):DF:INC.PROC")
+}
+record( dfanout, "$(P):DF:INC"){
+  field( DESC, "Send increment to motors")
+  field( DOL,  "$(P):MOVE:INC")
+  field( OMSL, "closed_loop")
+  field( OUTA, "$(P):$(M1):MOTR.TWV")
+  field( OUTB, "$(P):$(M2):MOTR.TWV")
+}
+record( dfanout, "$(P):MOVE:AWAY"){
+  field( DESC, "Start oposite move")
+  field( OUTA, "$(P):$(M1):MOTR.TWR PP")
+  field( OUTB, "$(P):$(M2):MOTR.TWF PP")
+  field( VAL,  "1")
+}
+record( dfanout, "$(P):MOVE:TOWARD"){
+  field( DESC, "Start toward move")
+  field( OUTA, "$(P):$(M1):MOTR.TWF PP")
+  field( OUTB, "$(P):$(M2):MOTR.TWR PP")
+  field( VAL,  "1")
+}
+record( dfanout, "$(P):MOVE:RIGHT"){
+  field( DESC, "Start move to right")
+  field( OUTA, "$(P):$(M1):MOTR.TWF PP")
+  field( OUTB, "$(P):$(M2):MOTR.TWF PP")
+  field( VAL,  "1")
+}
+record( dfanout, "$(P):MOVE:LEFT"){
+  field( DESC, "Start move to left")
+  field( OUTA, "$(P):$(M1):MOTR.TWR PP")
+  field( OUTB, "$(P):$(M2):MOTR.TWR PP")
+  field( VAL,  "1")
+}

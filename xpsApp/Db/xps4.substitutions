@@ -1,0 +1,20 @@
+file "asynMotor.template" {
+pattern
+{ M, ADDR,                      DESC, EGU, VELO, VBAS, ACCL,    MRES, PREC, DLLM,  DHLM}
+{m1,    0,  "Echo Spect. Det. Stage",  mm,  1.0,  0.8,   .2,    0.01,    2,    0,   112}
+{m2,    1, "Echo Spect. Bottom Slit",  mm,  0.6,  0.5,   .2,    0.01,    2,    0,    47}
+{m3,    2,    "Echo Spect. Top Slit",  mm,  0.6,  0.5,   .2,    0.01,    2,    0,    25}
+}
+
+file "xpsx.template" {
+pattern 
+{ M,     MTYP, ADDR, PREC,  DLLM,  DHLM}
+{m1, "Custom",    0,    2,     0,   112}
+{m2, "Custom",    1,    2,     0,    47}
+{m3, "Custom",    2,    2,     0,    25}
+}
+
+file "xpsTwoMotor.template" {
+pattern {M1, M2, EGU, PREC, DLLM, DHLM}
+        {m2, m3,  mm,    2,    0,   10}
+

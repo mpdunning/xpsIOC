@@ -1,0 +1,24 @@
+file "asynMotor.template"
+{
+pattern
+{ M, ADDR,                          DESC, EGU, VELO, VBAS, ACCL,    MRES, PREC, DHLM, DLLM}
+{m1,    0, "Final UV Turning Mirror (Y)",  mm,   .3,   .1,  .25, 0.00005,    4,     9,   0}
+{m2,    1, "Final UV Turning Mirror (X)",  mm,   .3,   .1,  .25, 0.00005,    4,     9,   0}
+{m3,    2, "Gun IR Waveplate"           , deg,   15,   .1,  .25, 0.00005,    2,   360,   0}
+{m4,    3, "Gun Table Mirror (Y)"       ,  mm,   .3,   .1,  .25, 0.00005,    4,   5.5,   0}
+{m5,    4, "Gun Table Mirror (X)"       ,  mm,   .3,   .1,  .25, 0.00005,    4,   5.5,   0}
+{m6,    5, "Laser cleaning lens 2"      ,  mm,   .3,   .1,  .25, 0.00005,    4,    25,   0}
+{m7,    6, "Laser cleaning lens 1"      ,  mm,   .3,   .1,  .25, 0.00005,    4,    25,   0}
+}
+
+file "xpsx.template"
+{
+pattern { M,       MTYP, ADDR, PREC, DLLM, DHLM}
+        {m1, "TRA12PPD",    0,    4,   0,     9}
+        {m2, "TRA12PPD",    1,    4,   0,     9}
+        {m3,   "PR50PP",    2,    3,   0,   360}
+        {m4,  "TRA6PPD",    3,    4,   0,   5.5}
+        {m5,  "TRA6PPD",    4,    4,   0,   5.5}
+        {m6,  "TRA25PPD",   4,    4,   0,    25}
+        {m7,  "TRA25PPD",   4,    4,   0,    25}
+}

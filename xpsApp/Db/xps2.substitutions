@@ -1,0 +1,16 @@
+file "asynMotor.template"
+{
+pattern
+{ M, ADDR,                       DESC, EGU, VELO, VBAS, ACCL,     MRES, PREC, DHLM, DLLM}
+{m1,    0, "800nm Delay (Regen 3)"   ,  mm,   .8,   .1,   .8,  0.00005,    3,   25,    0}
+{m2,    1, "Echo 800nm Waveplate"    , deg,    1,   .1,  .25,  0.00005,    2,  360,    0}
+{m3,    2, "Igor's motor"            ,  mm,   .3,   .1,  .25,  0.00005,    4,  5.9,    0}
+}
+
+file "xpsx.template"
+{
+pattern { M,     MTYP, ADDR, PREC, DLLM, DHLM}
+        {m1, "LTA-HL",    0,    3,    0,   25}
+        {m2, "SR50PP",    1,    2,    0,  360}
+        {m3,"TRA6PPD",    2,    4,    0,  5.9}
+}

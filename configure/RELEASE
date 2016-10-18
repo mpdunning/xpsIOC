@@ -1,0 +1,19 @@
+# RELEASE - Location of external support modules
+#
+# IF YOU MAKE ANY CHANGES to this file you must subsequently
+# do a "gnumake rebuild" in this application's top level
+# directory.
+#----------------------------------------------------------------------
+
+include $(TOP)/../../../RELEASE_SITE
+
+EPICS_BASE=$(EPICS_SITE_TOP)/base
+#TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+EPICS_MODULES=$(EPICS_SITE_TOP)/modules
+
+ASYN=$(EPICS_MODULES)/asyn/R4.23
+AUTOSAVE=$(EPICS_MODULES)/autosave/R5.3
+#MOTOR=$(EPICS_MODULES)/motor/R6.8.1
+MOTOR=$(EPICS_MODULES)/motor/R6.8
+SNCSEQ=$(EPICS_MODULES)/seq/R2.1.16
+

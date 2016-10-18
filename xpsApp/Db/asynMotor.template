@@ -1,0 +1,20 @@
+record( motor,"$(P):$(M):MOTR"){
+  field( DESC,"$(DESC)")
+  field( DTYP,"asynMotor")
+  field( DIR, "0")
+  field( VELO,"$(VELO)")
+  field( VBAS,"$(VBAS)")
+  field( ACCL,"$(ACCL)")
+  field( BDST,"0")
+  field( BVEL,"1")
+  field( BACC,"0.2")
+  field( OUT, "@asyn($(PORT),$(ADDR))")
+  field( MRES,"$(MRES)")
+  field( PREC,"$(PREC)")
+  field( EGU, "$(EGU)")
+  field( DHLM,"$(DHLM)")
+  field( DLLM,"$(DLLM)")
+  field( INIT,"")
+  field( TWV, "1")
+}
+

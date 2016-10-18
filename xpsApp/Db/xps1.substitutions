@@ -1,0 +1,33 @@
+file "asynMotor.template"
+{
+pattern
+{ M, ADDR,              DESC,  EGU, VELO, VBAS, ACCL,    MRES, PREC, DLLM, DHLM}
+{m1,    0, "Phase Shifter 1",   mm,    3,   .1,  .25, 0.00005,    3,    0,   50}
+{m2,    1, "Phase Shifter 2",   mm,    3,   .1,  .25, 0.00005,    3,    0,   50}
+{m3,    2, "Laser1 Waveplate", deg,   15,   .1,  .25, 0.00005,    2,    0,  360}
+{m4,    3, "Laser 2 800 Delay", mm,    3,   .1,  .25, 0.00005,    3,    0,   50}
+{m5,    4, "VUV Spect. Slit",   mm,   .4,   .1,  .25, 0.00005,    4,    0,  0.5}
+{m6,    5, "Laser1 Delay",      mm,    3,   .1,  .25, 0.00005,    3,    0,   50}
+{m7,    6, "Laser2 Delay",      mm,   .8,   .1,   .8, 0.00005,    3,    0,   17}
+}
+
+file "xpsx.template"
+{
+pattern
+        { M, ADDR,     MTYP, PREC, DLLM, DHLM}
+        {m1,    0, "LTA-HS",    3,    0,   50}
+        {m2,    1, "LTA-HS",    3,    0,   50}
+        {m3,    2, "PR50PP",    2,    0,  360}
+        {m4,    3, "LTA-HS",    3,    0,   50}
+        {m5,    4, "TRA6PPD",   4,    0,  0.5}
+        {m6,    5, "LTA-HS",    3,    0,   50}
+        {m7,    6, "LTA-HL",    3,    0,   17}
+}
+file "xpsphase.template"
+{
+pattern	{PREC, DLLM, DHLM}
+        {   3,    0,   50}
+}
+#
+#{m8,    4, "Phantom Stage",     mm,   .5,   .2,    1,    0.04,    3,  435, -435}
+#        {m8,  "Custom",   4,    2, -435,  435}

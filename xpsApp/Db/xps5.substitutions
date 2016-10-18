@@ -1,0 +1,13 @@
+file "asynMotor.template"
+{
+pattern 
+{ M,      DTYP,ADDR,  DESC, EGU, DIR, VELO, VBAS, ACCL, BDST, BVEL, BACC,     MRES, PREC, DHLM, DLLM, INIT}
+{m1, asynMotor,   0,"test",  mm, Pos,   .4,   .1,   .2,    0,    1,   .2,  0.00005,    4,     9,   0,   ""}
+}
+
+file "xpsx.template"
+{
+pattern { M, ADDR, PREC, DLLM, DHLM}
+        {m1,    0,    4,    0,   15}
+}
+
